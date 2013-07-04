@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<title>iManage</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css" />
+<link href="css/app.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/plugins/forms/jquery.ibutton.js"></script>
+<script type="text/javascript" src="js/plugins/forms/jquery.tagsinput.min.js"></script>
+<script type="text/javascript" src="js/plugins/forms/jquery.uniform.js"></script>
+<script type="text/javascript" src="js/plugins/forms/jquery.chosen.min.js"></script>
+<script type="text/javascript" src="js/app/underscore.js"></script>
+<script type="text/javascript" src="js/app/backbone.js"></script>
+
+
+<!-- <script type="text/javascript" src="js/files/functions.js"></script> -->
+
+</head>
+
+<body>
+
+<!-- Top line begins -->
+<div id="top">
+  <div class="wrapper detail">
+      <a href="index.html" title="" class="logo"></a>
+        
+        <!-- Right top nav -->
+        <div class="topNav">
+            <ul class="userNav">
+                <li><a title="" class="search"></a></li>
+                <li><a href="#" title="" class="screen"></a></li>
+                <li><a href="#" title="" class="settings"></a></li>
+                <li><a href="#" title="" class="logout"></a></li>
+                <li class="showTabletP"><a href="#" title="" class="sidebar"></a></li>
+            </ul>
+            <a title="" class="iButton"></a>
+            <a title="" class="iTop"></a>
+            <div class="topSearch">
+              <div class="topDropArrow"></div>
+                <form action="">
+                    <input type="text" placeholder="search..." name="topSearch" />
+                    <input type="submit" value="" />
+                </form>
+            </div>
+        </div>        
+        <div class="clear"></div>
+    </div>
+</div>
+<!-- Top line ends -->
+
+
+<!-- Sidebar begins -->
+<div id="sidebar">
+
+  <!-- Main nav -->
+    <div class="mainNav">
+        <div class="user">
+            <a title="" class="leftUserDrop"><img src="images/live/face1.png" alt="" /><span><strong>3</strong></span></a><span>Admin</span>
+            <ul class="leftUser">
+                <li><a href="#" title="" class="sProfile">My profile</a></li>
+                <li><a href="#" title="" class="sMessages">Messages</a></li>
+                <li><a href="#" title="" class="sSettings">Settings</a></li>
+                <li><a href="#" title="" class="sLogout">Logout</a></li>
+            </ul>
+        </div>
+        <!-- Main nav -->
+        <ul class="nav">
+            <li><a href="#" title=""><img src="images/icons/mainnav/dashboard.png" alt="" /><span>Next</span></a></li>
+            <li><a href="#" title=""><img src="images/icons/mainnav/ui.png" alt="" /><span>Inbox</span></a></li>
+            <li><a href="#" title=""><img src="images/icons/mainnav/forms.png" alt="" /><span>Projects</span></a></li>
+            <li><a href="#" title="" class="active"><img src="images/icons/mainnav/messages.png" alt="" /><span>Context</span></a></li>
+            <li><a href="#" title=""><img src="images/icons/mainnav/statistics.png" alt="" /><span>Calendar</span></a></li>
+            <li><a href="#" title=""><img src="images/icons/mainnav/tables.png" alt="" /><span>All</span></a></li>
+        </ul>
+    </div>
+    
+    <!-- Secondary nav -->
+    <div class="secNav">
+        <div class="secWrapper">
+            <div class="secTop">
+                <div class="balance">
+                    <div class="balInfo">Projects:<span>Apr 21 2012</span></div>
+                </div>
+                <a href="#" class="triangle-red"></a>
+            </div>
+       </div> 
+       <div class="clear"></div>
+   </div>
+</div>
+<!-- Sidebar ends -->
+    
+<!-- Content begins -->
+<div id="content">
+    <div class="contentTop">
+        <span class="pageTitle">Project Status</span>
+    </div>
+
+    
+    <!-- Main content -->
+    <div class="wrapper hideCompletion" id="todoapp">
+
+        <section class="list">
+            <div class="enterMessage">
+                <input type="text" id="addText" name="enterMessage" placeholder="What to do next..." />
+                <div class="sendBtn">
+                    <input type="submit" name="sendMessage" id="add" class="buttonS bLightBlue" value="Add" />
+                </div>
+            </div>
+    
+            <!-- Today Task -->
+            <div class="widget">
+                <div class="whead">
+                    <h6>TODAY</h6>
+                    <div class="on_off">
+                        <span>Show Completed</span>
+                        <input type="checkbox" name="chbox" />
+                    </div>            
+                    <div class="clear"></div>
+                </div>
+                
+                <ul id="task-list" class="messagesOne">
+  
+                </ul>
+            </div>
+        </section><!--  .list ends -->    
+
+
+        <section id="single-detail" class="detail detail-view fluid">
+
+
+        </section><!--  .list ends -->   
+        <div class="clear"></div>
+    </div>
+    <!-- Main content ends -->
+
+
+</div>
+<!-- Content ends -->
+
+<script type="text/template" id="item-template">
+
+<li class="by_user <%= done ? ' completed' : '' %>">
+    <div class="messageArea">
+        <div class="fs1 iconb" data-icon=""></div>
+        <div style="display:none" class="fs1 iconb" data-icon=""></div>
+        <%- title %>
+        <% if (category != "") { %>
+        <% _.each(category.split(','), function(cat, index){ %>
+          <span class="greyBack label"><%- cat %></span> 
+        <% }); %>
+        <% } %>
+
+    </div>
+    <div class="clear"></div>
+</li>    
+</script>
+
+<script type="text/template" id="single-detail-template">
+
+<div class="widget">
+    <div class="whead">
+        <div class="formRow titleViewRow">
+            <input type="checkbox" id="complete" checked="checked" name="chbox">
+            <h5><%- title %></h5>
+            <div class="action">
+                <div class="fs1 iconb" data-icon=""></div>
+                <div style="display:none" class="fs1 iconb" data-icon=""></div>
+            </div>
+        </div>       
+        
+        <div class="formRow titleEditRow" style="display: none">
+            <input type="text" value="<%- title %>" />
+            <div class="action">
+                <a href="#" id="saveTitle" class="buttonS bDefault opt" ><div class="fs1 iconb" data-icon=""></div></a>
+                <a href="#" id="closeTitle" class="buttonS bDefault opt" ><div class="fs1 iconb" data-icon=""></div></a>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+        
+    <div class="formRow">
+        <div class="grid3"><label>Created On:</label></div>
+        <div class="grid8"><h6>July 02</h6></div>
+        <div class="clear"></div>
+    </div>
+    <div class="formRow">
+        <div class="grid3"><label>Due Date:</label></div>
+        <div class="grid8"><input type="text" class="datepicker" /></div>
+        <div class="clear"></div>
+    </div>                
+
+    <div class="formRow">
+        <div class="grid3">
+            <label>Time Assigned:</label>
+        </div>
+        <div class="grid8">
+            <select name="select2" class="styled" >
+            <option value="opt2">30m</option>
+            <option value="opt3">1h</option>
+            <option value="opt4">1.5h</option>
+            <option value="opt5">2h</option>
+            <option value="opt6">3h</option>
+            <option value="opt7">5h</option>
+            </select>
+        </div>
+        <div class="clear"></div>    
+    </div>
+    <div class="formRow">
+        <div class="grid3"><label>Tags:</label></div>
+        <div class="grid9"><input type="text" id="tags" name="tags" class="tags" value="<%- category %>" /></div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="formRow">
+        <div class="grid3">
+        <label>Notes:</label>
+        </div>
+        <div class="grid9">
+        <textarea rows="8" cols="" name="textarea" placeholder="Your message"></textarea>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="formRow noBorderB">
+        <div class="grid2">
+        <input id="save" type="submit" class="buttonS bLightBlue" value="Save">
+        </div>
+        <div class="grid2">
+        <input id="close" type="submit" class="buttonS bRed" value="Close">
+        </div>
+        <div class="grid2 action"><div id="delete" class="fs1 iconb" data-icon=""></div></div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+</script>
+
+<script type="text/javascript" src="js/app/model.js"></script>
+<script type="text/javascript" src="js/app/collection.js"></script>
+<script type="text/javascript" src="js/app/view-model.js"></script>
+<script type="text/javascript" src="js/app/view-collection.js"></script>
+<script type="text/javascript" src="js/app/view-app.js"></script>
+<script type="text/javascript" src="js/app/main.js"></script>
+
+</body>
+</html>

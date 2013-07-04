@@ -1,0 +1,90 @@
+#todoapp .on_off {
+  width: 150px;
+}
+#task-list {
+  padding-top: 20px;
+}
+#task-list li:first-child {
+  margin-top: 0;
+}
+#addText {
+  font-size: 14px;
+}
+.hideCompletion .completed {
+  display: none;
+} .
+.showCompletion .completed {
+  display: block;
+}
+section.detail-view {
+  width: 48%;
+  float: left;
+}
+section.detail {
+  margin-left: 30px;
+  margin-top: 20px;
+  border-top: 1px solid #cdcdcd;
+}
+section.detail .formRow.titleEditRow {
+  padding-bottom: 21px;
+}
+section.detail .formRow.titleEditRow input {
+  width: 80%;
+  vertical-align: middle;
+}
+section.detail .formRow.titleEditRow a {
+  padding: 4px 5px;
+  vertical-align: middle;
+}
+section.detail .titleViewRow h5 {
+  font-size: 17px;
+  display: inline-block;
+  padding-left: 10px;
+  line-height: 28px;
+  
+}
+section.detail .titleViewRow input {
+
+  margin-left: 10px;
+}
+section.detail .formRow:first-child {
+  border: none;
+}
+section.detail .formRow label {
+  padding-right: 10px;
+  float: right;
+}
+section.detail .action {
+  display: inline-block;
+  float: right;
+  vertical-align: middle;
+}
+section .iconb, section .action .iconb {
+  font-size: 14px;
+  display: inline;
+  padding-right: 10px;
+  vertical-align: middle;
+}
+section .messagesOne .by_user .messageArea {
+  font-size: 15px;
+  font-weight: bold;
+}
+section.list.detail-view .messageArea > span,
+section.list.detail-view .messageArea > div {
+  display: none;
+}
+section.list .messageArea > .label {
+  float: right;
+  margin-right: 5px;
+}
+
+
+
+
+.list.detail-view .selected .messageArea {
+  background-color: #b5cdd7;
+}
+.list .completed .messageArea {
+  text-decoration: line-through;
+  background-color: #f1f1f1;
+}
