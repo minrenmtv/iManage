@@ -13,6 +13,7 @@ var Todo = Backbone.Model.extend({
       priority: 'Normal',
       category: '',
       datetime_created: Date.now(),
+      datetime_due: Date.now(),
       datetime_finished: '',
       notes: ''
     };

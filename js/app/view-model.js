@@ -8,9 +8,7 @@ var singleTodo = Backbone.View.extend({
 
     //this.listenTo(this.model, 'change', this.render);
 
-    this.edit_title = this.$("input.title");
-    this.edit_note = this.$("input.note");
-    this.edit_category = this.$("input.category");
+    this.due_field = this.$(".datepicker");
 
     this.render(model);
   },
@@ -40,13 +38,11 @@ var singleTodo = Backbone.View.extend({
   },
   saveDetail: function() {
     this.model.save({
-      title: this.edit_title.val(),
-      category: this.edit_category.val(),
-      note: this.edit_note.val()
+      datetime_due: function() {
+        return this.due_field.datapicker('getDate').getTime();
+      }
     });
-    
-    this.render(this.model);
-    return false;
+
   },
   deleteDetail: function() {
     var model = this.model;

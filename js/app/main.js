@@ -28,14 +28,16 @@ $(document).on('ready refresh', function(){
   });
 
   $('.tags').tagsInput({width:'100%'});
-
+  
+  var datetime = new Date();
   $( ".datepicker" ).datepicker({ 
-      defaultDate: +7,
+
       showOtherMonths:true,
       autoSize: true,
       appendText: '(dd-mm-yyyy)',
       dateFormat: 'dd-mm-yy'
-  }); 
+  }).datepicker("setDate", datetime); 
+
   $("select, .check, .check :checkbox, input:radio, input:file").uniform();
 
 });

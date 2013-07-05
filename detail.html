@@ -14,6 +14,7 @@
 <script type="text/javascript" src="js/plugins/forms/jquery.chosen.min.js"></script>
 <script type="text/javascript" src="js/app/underscore.js"></script>
 <script type="text/javascript" src="js/app/backbone.js"></script>
+<script type="text/javascript" src="js/plugins/forms/xdate.js"></script>
 
 
 <!-- <script type="text/javascript" src="js/files/functions.js"></script> -->
@@ -69,10 +70,10 @@
         <!-- Main nav -->
         <ul class="nav">
             <li><a href="#" title=""><img src="images/icons/mainnav/dashboard.png" alt="" /><span>Next</span></a></li>
-            <li><a href="#" title=""><img src="images/icons/mainnav/ui.png" alt="" /><span>Inbox</span></a></li>
+            <li><a href="detail.html" title=""><img src="images/icons/mainnav/ui.png" alt="" /><span>Inbox</span></a></li>
             <li><a href="#" title=""><img src="images/icons/mainnav/forms.png" alt="" /><span>Projects</span></a></li>
             <li><a href="#" title="" class="active"><img src="images/icons/mainnav/messages.png" alt="" /><span>Context</span></a></li>
-            <li><a href="#" title=""><img src="images/icons/mainnav/statistics.png" alt="" /><span>Calendar</span></a></li>
+            <li><a href="calendar.html" title=""><img src="images/icons/mainnav/statistics.png" alt="" /><span>Calendar</span></a></li>
             <li><a href="#" title=""><img src="images/icons/mainnav/tables.png" alt="" /><span>All</span></a></li>
         </ul>
     </div>
@@ -183,12 +184,19 @@
         
     <div class="formRow">
         <div class="grid3"><label>Created On:</label></div>
-        <div class="grid8"><h6>July 02</h6></div>
+        <div class="grid8"><h6>
+            <% if (datetime_created) { 
+                var datetime = new XDate(datetime_created); 
+                var result = datetime.toString("ddd, MMM dd, hh:mm tt");
+            %>
+            <%= result %>
+            <% } %>
+        </h6></div>
         <div class="clear"></div>
     </div>
     <div class="formRow">
         <div class="grid3"><label>Due Date:</label></div>
-        <div class="grid8"><input type="text" class="datepicker" /></div>
+        <div class="grid8"><input type="text" id="" class="datepicker" /></div>
         <div class="clear"></div>
     </div>                
 
