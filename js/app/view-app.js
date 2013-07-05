@@ -48,17 +48,28 @@ var AppView = Backbone.View.extend({
 
   // Add a single todo item to the list by creating a view for it, and
   // appending its element to the `<ul>`.
-  addOne: function(todo) {
+  addToday: function(todo) {
 
     var view = new TodoView({model: todo});
     // view.render();
     // Todos.sort();
-    this.$("#task-list").append(view.render().el);
+    this.$("#today-task-list").append(view.render().el);
+  },
+  addPrevious: function(todo) {
+
+    var view = new TodoView({model: todo});
+    // view.render();
+    // Todos.sort();
+    this.$("#previous-task-list").append(view.render().el);
   },
 
   // Add all items in the **Todos** collection at once.
   addAll: function() {
-    Todos.each(this.addOne, this);
+    //Todos.each(this.addOne, this);
+
+    _.each(Todos.getTodayList(), this.addToday, this);
+    _.each(Todos.getPreviousList(), this.addPrevious, this);
+
   },
 
   // If you hit return in the main input field, create new **Todo** model,
@@ -74,9 +85,9 @@ var AppView = Backbone.View.extend({
       this.addTask();
     }
   },
-  toggleCompletion: function() {
-    this.$el.toggleClass("showCompletion");
-    this.$el.toggleClass("hideCompletion");
+  toggleCompletion: function(e) {
+    $(e.target).closest(".whead").next().toggleClass("showCompletion");
+    $(e.target).closest(".whead").next().toggleClass("hideCompletion");
 
     return false;
   },

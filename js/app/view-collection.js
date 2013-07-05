@@ -1,13 +1,12 @@
 var TodoView = Backbone.View.extend({
 
-  tagName: "div",
-
   // Cache the template function for a single item.
   template: _.template($('#item-template').html()),
 
   // The DOM events specific to an item.
   events: {
-    "click .messageArea" : "editDetail",
+    "click .messageArea" : "editDetail"
+
     // "click a.delete-todo" : "clear",
     // "keypress .edit"  : "updateOnEnter",
     // "click a.save-todo": "save",
@@ -81,9 +80,9 @@ var TodoView = Backbone.View.extend({
       window.singleView.undelegateEvents();
     }
     window.singleView = new singleTodo(this.model);
-    $("section.list").addClass("detail-view");
-    $("section.detail").addClass("detail-view");
-    this.$("li").addClass("selected");
+    $("section.list").addClass("detail-view"); // shorten the list, fater speed
+    $("section.detail").addClass("detail-view", 150); // sliding in the detail panel, slower speed
+    this.$("li").addClass("selected"); // highlight the selected item
     $(document).trigger('refresh');
   },
 

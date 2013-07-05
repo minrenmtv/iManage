@@ -8,7 +8,6 @@ var singleTodo = Backbone.View.extend({
 
     //this.listenTo(this.model, 'change', this.render);
 
-    this.due_field = this.$(".datepicker");
 
     this.render(model);
   },
@@ -21,7 +20,8 @@ var singleTodo = Backbone.View.extend({
     "click h5": "toggleTitleEdit",
     "click #saveTitle": "saveTitle",
     "click #closeTitle": "closeTitle",
-    "keypress input": "saveTitleOnEnter"
+    "keypress input": "saveTitleOnEnter",
+    "changeDate .datepicker": "changeDueDate"
     // "click a.save": "save",
     // "click div.task": "editTitle",
     // "click div.category": "editCategory"
@@ -37,11 +37,20 @@ var singleTodo = Backbone.View.extend({
     this.$el.html("");
   },
   saveDetail: function() {
+    var dueDatetime = this.$(".datepicker").datepicker('getDate').getTime();
+    var timeAssigned = this.$("select[name='timeAssigned']").val();
+    var tags = this.$("[name='category']").val();
+    var notes = this.$("[name='notes']").val();
+    console.log(dueDatetime);
+
     this.model.save({
-      datetime_due: function() {
-        return this.due_field.datapicker('getDate').getTime();
-      }
+      datetime_due: dueDatetime,
+      timeAssigned: timeAssigned,
+      category: tags,
+      notes: notes
     });
+
+    this.closeDetail();
 
   },
   deleteDetail: function() {
@@ -74,6 +83,22 @@ var singleTodo = Backbone.View.extend({
     console.log("opening detail");
   },
   editCategory: function() {
+
+  },
+  changeDueDate: function() {
+
+    var newDueDate = $(".datepicker").datepicker('getDate');
+    var dateCreated = new Date(this.model.attributes.datetime_created);
+    var diff = newDueDate - dateCreated;
+    if (diff > 0) {
+      var day = diff / ( 24 * 60 * 60 * 1000);
+      if (day >= 1) {
+        $("select[name='timeAssigned']").val("-1");
+        $.uniform.update("select[name='timeAssigned']");
+      }
+      
+    }
+
 
   },
   toggleComplete: function() {

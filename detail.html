@@ -101,7 +101,7 @@
 
     
     <!-- Main content -->
-    <div class="wrapper hideCompletion" id="todoapp">
+    <div class="wrapper " id="todoapp">
 
         <section class="list">
             <div class="enterMessage">
@@ -114,7 +114,7 @@
             <!-- Today Task -->
             <div class="widget">
                 <div class="whead">
-                    <h6>TODAY</h6>
+                    <h6>CREATED TODAY</h6>
                     <div class="on_off">
                         <span>Show Completed</span>
                         <input type="checkbox" name="chbox" />
@@ -122,14 +122,25 @@
                     <div class="clear"></div>
                 </div>
                 
-                <ul id="task-list" class="messagesOne">
+                <ul id="today-task-list" class="messagesOne task-list hideCompletion">
+  
+                </ul>
+                <div class="whead">
+                    <h6>CREATED PREVIOUSLY</h6>
+                    <div class="on_off">
+                        <span>Show Completed</span>
+                        <input type="checkbox" name="chbox" />
+                    </div>            
+                    <div class="clear"></div>
+                </div> 
+                <ul id="previous-task-list" class="messagesOne task-list hideCompletion">
   
                 </ul>
             </div>
         </section><!--  .list ends -->    
 
 
-        <section id="single-detail" class="detail detail-view fluid">
+        <section id="single-detail" class="detail fluid">
 
 
         </section><!--  .list ends -->   
@@ -184,9 +195,18 @@
         
     <div class="formRow">
         <div class="grid3"><label>Created On:</label></div>
-        <div class="grid8"><h6>
+        <div class="grid3"><h6>
             <% if (datetime_created) { 
                 var datetime = new XDate(datetime_created); 
+                var result = datetime.toString("ddd, MMM dd, hh:mm tt");
+            %>
+            <%= result %>
+            <% } %>
+        </h6></div>
+        <div class="grid3"><label>Finished On:</label></div>
+        <div class="grid3"><h6>
+            <% if (datetime_finished) { 
+                var datetime = new XDate(datetime_finished); 
                 var result = datetime.toString("ddd, MMM dd, hh:mm tt");
             %>
             <%= result %>
@@ -204,21 +224,38 @@
         <div class="grid3">
             <label>Time Assigned:</label>
         </div>
-        <div class="grid8">
-            <select name="select2" class="styled" >
-            <option value="opt2">30m</option>
-            <option value="opt3">1h</option>
-            <option value="opt4">1.5h</option>
-            <option value="opt5">2h</option>
-            <option value="opt6">3h</option>
-            <option value="opt7">5h</option>
+        <div class="grid3">
+            <select name="timeAssigned" class="styled" >
+            <option <%= timeAssigned == "1800000" ? "selected" : "" %> value="1800000">30m</option>
+            <option <%= timeAssigned == "3600000" ? "selected" : "" %> value="3600000">1h</option>
+            <option <%= timeAssigned == "5400000" ? "selected" : "" %> value="5400000">1.5h</option>
+            <option <%= timeAssigned == "7200000" ? "selected" : "" %> value="7200000">2h</option>
+            <option <%= timeAssigned == "10800000" ? "selected" : "" %> value="10800000">3h</option>
+            <option <%= timeAssigned == "18000000" ? "selected" : "" %> value="18000000">5h</option>
+            <option <%= timeAssigned == "-1" ? "selected" : "" %> value="-1">1+ days</option>
             </select>
+        </div>
+        <div class="grid3">
+            <label>Time Spent:</label>
+        </div>
+        <div class="grid3">
+            <% if(datetime_created && datetime_finished) { 
+                var datetime_finished = new XDate(datetime_finished);
+                var datetime_created = new XDate(datetime_created); 
+                var result = Math.floor(datetime_created.diffDays(datetime_finished) * 10) / 10 + " days";
+                if (parseFloat(result) < 1) {
+                    result = Math.floor(datetime_created.diffHours(datetime_finished) * 10) / 10 + " hours";
+                }
+
+            %>
+            <%= result %>
+            <% } %>
         </div>
         <div class="clear"></div>    
     </div>
     <div class="formRow">
         <div class="grid3"><label>Tags:</label></div>
-        <div class="grid9"><input type="text" id="tags" name="tags" class="tags" value="<%- category %>" /></div>
+        <div class="grid9"><input type="text" id="tags" name="category" class="tags" value="<%- category %>" /></div>
         <div class="clear"></div>
     </div>
 
@@ -227,7 +264,7 @@
         <label>Notes:</label>
         </div>
         <div class="grid9">
-        <textarea rows="8" cols="" name="textarea" placeholder="Your message"></textarea>
+        <textarea rows="8" cols="" name="notes" placeholder="Your message"><%- notes %></textarea>
         </div>
         <div class="clear"></div>
     </div>

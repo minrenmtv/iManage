@@ -11,91 +11,14 @@
 <script type="text/javascript" src="js/plugins/forms/jquery.ibutton.js"></script>
 <script type="text/javascript" src="js/plugins/others/jquery.fullcalendar.js"></script>
 
+<script type="text/javascript" src="js/app/underscore.js"></script>
+<script type="text/javascript" src="js/app/backbone.js"></script>
+<script type="text/javascript" src="js/plugins/forms/xdate.js"></script>
+
 <script>
 $(function(){
 
-    //===== iButtons =====//
-    
-    $('.on_off :checkbox, .on_off :radio').iButton({
-        labelOn: "",
-        labelOff: "",
-        enableDrag: false 
-    });
-    
-    $('.yes_no :checkbox, .yes_no :radio').iButton({
-        labelOn: "On",
-        labelOff: "Off",
-        enableDrag: false
-    });
-    
-    $('.enabled_disabled :checkbox, .enabled_disabled :radio').iButton({
-        labelOn: "Enabled",
-        labelOff: "Disabled",
-        enableDrag: false
-    });
 
-    //===== Calendar =====//
-    
-    var date = new Date();
-    var d = date.getDate();
-    var m = date.getMonth();
-    var y = date.getFullYear();
-    
-    $('#calendar').fullCalendar({
-        header: {
-            left: 'prev,next',
-            center: 'title',
-            right: 'month,agendaWeek,agendaDay'
-        },
-        editable: true,
-        events: [
-            {
-                title: 'All Day Event',
-                start: new Date(y, m, 1)
-            },
-            {
-                title: 'Long Event',
-                start: new Date(y, m, d-5),
-                end: new Date(y, m, d-2)
-            },
-            {
-                id: 999,
-                title: 'Repeating Event',
-                start: new Date(y, m, d-3, 16, 0),
-                allDay: false
-            },
-            {
-                id: 999,
-                title: 'Repeating Event',
-                start: new Date(y, m, d+4, 16, 0),
-                allDay: false
-            },
-            {
-                title: 'Meeting',
-                start: new Date(y, m, d, 10, 30),
-                allDay: false
-            },
-            {
-                title: 'Lunch',
-                start: new Date(y, m, d, 12, 0),
-                end: new Date(y, m, d, 14, 0),
-                allDay: false
-            },
-            {
-                title: 'Birthday Party',
-                start: new Date(y, m, d+1, 19, 0),
-                end: new Date(y, m, d+1, 22, 30),
-                allDay: false
-            },
-            {
-                title: 'Click for Google',
-                start: new Date(y, m, 28),
-                end: new Date(y, m, 29),
-                url: 'http://google.com/'
-            }
-        ]
-    });
- 
     
     
 });
@@ -180,7 +103,7 @@ $(function(){
         <span class="pageTitle">Project Status</span>
     </div>
 
-    <div class="wrapper">
+    <div class="wrapper" id="todo-calendar">
         <div class="widget">
             <div class="whead"><h6>Calendar</h6><div class="clear"></div></div>
             <div id="calendar"></div>
@@ -188,6 +111,10 @@ $(function(){
     </div>
 </div>
 <!-- Content ends -->
+
+<script type="text/javascript" src="js/app/calendar/model.js"></script>
+<script type="text/javascript" src="js/app/calendar/collection.js"></script>
+<script type="text/javascript" src="js/app/calendar/view-app.js"></script>
 
 </body>
 </html>
