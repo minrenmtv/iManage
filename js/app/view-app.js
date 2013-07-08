@@ -25,11 +25,11 @@ var AppView = Backbone.View.extend({
   initialize: function() {
 
     this.newInput = this.$("#addText");
-    this.listContainer = this.$("#task-list");
+    this.listContainer = this.$(".task-list");
     //this.enableSortable();
 
     this.listenTo(Todos, 'addOne', this.addOne);
-    //this.listenTo(Todos, 'change', this.render);
+    this.listenTo(Todos, 'change', this.render);
     this.listenTo(Todos, 'sync', this.render);
 
     // this.footer = this.$('footer');
