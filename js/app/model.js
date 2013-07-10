@@ -10,7 +10,7 @@ var Todo = Backbone.Model.extend({
     return {
       title: "What to do next ...",
       done: false,
-      priority: 'Normal',
+      priority: true,  //true for no star... this is backwards...
       category: '',
       datetime_created: Date.now(),
       datetime_due: Date.now(),
@@ -22,7 +22,12 @@ var Todo = Backbone.Model.extend({
 
   // Toggle the `done` state of this todo item.
   toggleComplete: function() {
-    this.save({done: !this.get("done"), datetime_finished: Date.now()});
+    if (this.get('datetime_finished') == '') {
+      var newDate = Date.now();
+    } else {
+      var newDate = '';
+    }
+    this.save({done: !this.get("done"), datetime_finished: newDate});
   },
 
   parse: function(resp) {
@@ -36,6 +41,9 @@ var Todo = Backbone.Model.extend({
       attrs._id = { $oid: this.id };
     }
     return attrs;
+  },
+  toggleStar: function() {
+    this.save({priority: !this.get("priority")});
   }
 
 });

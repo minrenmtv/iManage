@@ -6,7 +6,7 @@ var singleTodo = Backbone.View.extend({
   initialize: function(model) {
     this.model = model;
 
-    //this.listenTo(this.model, 'change', this.render);
+    // this.listenTo(this.model, 'change', this.render);
 
 
     this.render(model);
@@ -21,7 +21,8 @@ var singleTodo = Backbone.View.extend({
     "click #saveTitle": "saveTitle",
     "click #closeTitle": "closeTitle",
     "keypress input": "saveTitleOnEnter",
-    "changeDate .datepicker": "changeDueDate"
+    "changeDate .datepicker": "changeDueDate",
+    "click .star": "toggleStar"
     // "click a.save": "save",
     // "click div.task": "editTitle",
     // "click div.category": "editCategory"
@@ -103,6 +104,10 @@ var singleTodo = Backbone.View.extend({
   },
   toggleComplete: function() {
     this.model.toggleComplete();
+  },
+  toggleStar: function() {
+    this.model.toggleStar();
+    this.$('.star').toggle();
   }
 
 });

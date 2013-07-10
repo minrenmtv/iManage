@@ -27,7 +27,10 @@ $(document).on('ready refresh', function(){
       enableDrag: false
   });
 
+if ($('.tags').length != 0) {
   $('.tags').tagsInput({width:'100%'});
+}
+  
 
   var datetime = new Date();
   $( ".datepicker" ).datepicker({ 
@@ -41,6 +44,13 @@ $(document).on('ready refresh', function(){
       }
   }).datepicker("setDate", datetime); 
 
-  $("select, .check, .check :checkbox, input:radio, input:file").uniform();
+  if (  $("select, .check, .check :checkbox, input:radio, input:file").length != 0 ) {
+    $("select, .check, .check :checkbox, input:radio, input:file").uniform();
+  }
+  
+  $(".secNav span").html(function(){
+    var today = new XDate();
+    return today.toString("MMM dd yyyy");
+  });
 
 });

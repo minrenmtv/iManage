@@ -79,7 +79,7 @@ section .messagesOne .by_user .messageArea {
 }
 section.list.detail-view .messageArea > span,
 section.list.detail-view .messageArea > div {
-  display: none;
+  /*display: none;*/
 }
 section.list .messageArea > .label {
   float: right;
@@ -97,4 +97,8 @@ section.detail h6 {
 .list .completed .messageArea {
   text-decoration: line-through;
   background-color: #f1f1f1;
+}
+
+.mainNav .iconb {
+  font-size: 22px;
 }

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-<title>iManage Calendar Page</title>
+<title>iManage Context Page</title>
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
 <link href="css/app.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -14,8 +14,7 @@
 <script type="text/javascript" src="js/app/underscore.js"></script>
 <script type="text/javascript" src="js/app/backbone.js"></script>
 <script type="text/javascript" src="js/plugins/forms/xdate.js"></script>
-<script type="text/javascript" src="js/plugins/ui/jquery.tipsy.js"></script>
-
+<script type="text/javascript" src="js/app/main.js"></script>
 
 <script>
 $(function(){
@@ -78,32 +77,41 @@ $(function(){
             <li><a href="next.html" title=""><div class="fs1 iconb" data-icon=""></div><span>Next</span></a></li>
             <li><a href="inbox.html" title=""><div class="fs1 iconb" data-icon=""></div><span>Inbox</span></a></li>
             <li><a href="project.html" title=""><div class="fs1 iconb" data-icon=""></div><span>Projects</span></a></li>
-            <li><a href="context.html" title=""><div class="fs1 iconb" data-icon=""></div><span>Context</span></a></li>
-            <li><a href="calendar.html" title="" class="active"><div class="fs1 iconb" data-icon=""></div><span>Calendar</span></a></li>
+            <li><a href="context.html" title="" class="active"><div class="fs1 iconb" data-icon=""></div><span>Context</span></a></li>
+            <li><a href="calendar.html" title="" ><div class="fs1 iconb" data-icon=""></div><span>Calendar</span></a></li>
         </ul>
     </div>
-
+    
+    <!-- Secondary nav -->
+    <div class="secNav">
+        <div class="secWrapper">
+            <div class="secTop">
+                <div class="balance">
+                    <div class="balInfo">Context:<span></span></div>
+                </div>
+                <a href="#" class="triangle-red"></a>
+            </div>
+       </div> 
+       <div class="clear"></div>
+   </div>
 </div>
 <!-- Sidebar ends -->
     
 <!-- Content begins -->
-<div id="content" style="margin-left: 100px">
+<div id="content">
     <div class="contentTop">
         <span class="pageTitle">Project Status</span>
     </div>
 
-    <div class="wrapper" id="todo-calendar">
-        <div class="widget">
-            <div class="whead"><h6>Calendar</h6><div class="clear"></div></div>
-            <div id="calendar"></div>
-        </div>
+    <div class="wrapper" id="iManage-project">
+
     </div>
 </div>
 <!-- Content ends -->
 
 <script type="text/javascript" src="js/app/model.js"></script>
 <script type="text/javascript" src="js/app/collection.js"></script>
-<script type="text/javascript" src="js/app/calendar/view-calendar.js"></script>
+<script type="text/javascript" src="js/app/context/view-context.js"></script>
 
 </body>
 </html>

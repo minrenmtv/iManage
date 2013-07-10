@@ -6,7 +6,6 @@ var TodoView = Backbone.View.extend({
   // The DOM events specific to an item.
   events: {
     "click .messageArea" : "editDetail"
-
     // "click a.delete-todo" : "clear",
     // "keypress .edit"  : "updateOnEnter",
     // "click a.save-todo": "save",
@@ -29,8 +28,13 @@ var TodoView = Backbone.View.extend({
 
   // Re-render the titles of the todo item.
   render: function() {
-    
+    var selected = this.$('li').hasClass('selected');
+
     this.$el.html(this.template(this.model.toJSON()));
+
+    if(selected) {
+      this.$('li').addClass('selected');
+    } 
     // this.$el.toggleClass('done', this.model.get('done'));
     // this.edit_title = this.$('.edit-title');
     // this.edit_category = this.$('.edit-category');
@@ -75,7 +79,7 @@ var TodoView = Backbone.View.extend({
   },
   editDetail: function() {
     // console.log("in edit detail");
-    $("#task-list li").removeClass("selected");
+    $(".task-list li").removeClass("selected");
     if (window.singleView) {
       window.singleView.undelegateEvents();
     }

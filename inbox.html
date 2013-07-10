@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-<title>iManage</title>
+<title>iManage Inbox Page</title>
 <link href="css/styles.css" rel="stylesheet" type="text/css" />
 <link href="css/app.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script>
@@ -15,6 +15,8 @@
 <script type="text/javascript" src="js/app/underscore.js"></script>
 <script type="text/javascript" src="js/app/backbone.js"></script>
 <script type="text/javascript" src="js/plugins/forms/xdate.js"></script>
+<script type="text/javascript" src="js/app/main.js"></script>
+
 
 
 <!-- <script type="text/javascript" src="js/files/functions.js"></script> -->
@@ -69,32 +71,19 @@
         </div>
         <!-- Main nav -->
         <ul class="nav">
-            <li><a href="#" title=""><img src="images/icons/mainnav/dashboard.png" alt="" /><span>Next</span></a></li>
-            <li><a href="detail.html" title=""><img src="images/icons/mainnav/ui.png" alt="" /><span>Inbox</span></a></li>
-            <li><a href="#" title=""><img src="images/icons/mainnav/forms.png" alt="" /><span>Projects</span></a></li>
-            <li><a href="#" title="" class="active"><img src="images/icons/mainnav/messages.png" alt="" /><span>Context</span></a></li>
-            <li><a href="calendar.html" title=""><img src="images/icons/mainnav/statistics.png" alt="" /><span>Calendar</span></a></li>
-            <li><a href="#" title=""><img src="images/icons/mainnav/tables.png" alt="" /><span>All</span></a></li>
+            <li><a href="next.html" title=""><div class="fs1 iconb" data-icon=""></div><span>Next</span></a></li>
+            <li><a href="inbox.html" title="" class="active"><div class="fs1 iconb" data-icon=""></div><span>Inbox</span></a></li>
+            <li><a href="project.html" title=""><div class="fs1 iconb" data-icon=""></div><span>Projects</span></a></li>
+            <li><a href="context.html" title=""><div class="fs1 iconb" data-icon=""></div><span>Context</span></a></li>
+            <li><a href="calendar.html" title=""><div class="fs1 iconb" data-icon=""></div><span>Calendar</span></a></li>
         </ul>
     </div>
-    
-    <!-- Secondary nav -->
-    <div class="secNav">
-        <div class="secWrapper">
-            <div class="secTop">
-                <div class="balance">
-                    <div class="balInfo">Projects:<span>Apr 21 2012</span></div>
-                </div>
-                <a href="#" class="triangle-red"></a>
-            </div>
-       </div> 
-       <div class="clear"></div>
-   </div>
+
 </div>
 <!-- Sidebar ends -->
     
 <!-- Content begins -->
-<div id="content">
+<div id="content" style="margin-left: 100px;">
     <div class="contentTop">
         <span class="pageTitle">Project Status</span>
     </div>
@@ -156,7 +145,8 @@
 
 <li class="by_user <%= done ? ' completed' : '' %>">
     <div class="messageArea">
-        <div class="fs1 iconb" data-icon=""></div>
+        <div <%= priority ? '' : 'style="display:none"' %>class="fs1 iconb star" data-icon=""></div>
+        <div <%= priority ? 'style="display:none"' : '' %> class="fs1 iconb star" data-icon=""></div>
         <div style="display:none" class="fs1 iconb" data-icon=""></div>
         <%- title %>
         <% if (category != "") { %>
@@ -175,11 +165,11 @@
 <div class="widget">
     <div class="whead">
         <div class="formRow titleViewRow">
-            <input type="checkbox" id="complete" checked="checked" name="chbox">
+            <input type="checkbox" id="complete" <%- done ? 'checked="checked"' : '' %>  name="chbox">
             <h5><%- title %></h5>
             <div class="action">
-                <div class="fs1 iconb" data-icon=""></div>
-                <div style="display:none" class="fs1 iconb" data-icon=""></div>
+                <div <%= priority ? '' : 'style="display:none"' %>class="fs1 iconb star" data-icon=""></div>
+                <div <%= priority ? 'style="display:none"' : '' %> class="fs1 iconb star" data-icon=""></div>
             </div>
         </div>       
         
@@ -287,7 +277,6 @@
 <script type="text/javascript" src="js/app/view-model.js"></script>
 <script type="text/javascript" src="js/app/view-collection.js"></script>
 <script type="text/javascript" src="js/app/view-app.js"></script>
-<script type="text/javascript" src="js/app/main.js"></script>
 
 </body>
 </html>
