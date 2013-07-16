@@ -32,7 +32,14 @@ var AppView = Backbone.View.extend({
       event.end = new Date(item.get('datetime_finished'));
       event.allDay = false;
 
+      if (item.get('datetime_finished') == '') {
+        event.end = new Date();
+        event.color = "#68C702";
+        event.textColor = "#fff";
+      }
+
       events.push(event);
+
     }, this);
 
         

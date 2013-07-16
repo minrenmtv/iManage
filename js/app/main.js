@@ -48,7 +48,7 @@ if ($('.tags').length != 0) {
     $("select, .check, .check :checkbox, input:radio, input:file").uniform();
   }
   
-  $(".secNav span").html(function(){
+  $(".secTop span").html(function(){
     var today = new XDate();
     return today.toString("MMM dd yyyy");
   });

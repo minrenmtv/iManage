@@ -18,7 +18,9 @@
 
 <script>
 $(function(){
-
+    $(".secTop a").click(function() {
+        $("#context-list").trigger("addContext");
+    });
 
     
     
@@ -90,8 +92,17 @@ $(function(){
                     <div class="balInfo">Context:<span></span></div>
                 </div>
                 <a href="#" class="triangle-red"></a>
+                <div class="clear"></div>
             </div>
-       </div> 
+
+            <ul class="userList" id="context-list">
+
+            </ul>
+
+        </div> 
+
+
+
        <div class="clear"></div>
    </div>
 </div>
@@ -109,9 +120,18 @@ $(function(){
 </div>
 <!-- Content ends -->
 
+
+<script type="text/template" id="context-list-template">
+
+    <li><a href="#"><span class="<%- color %>-context"><%- name %></span></a></li>
+
+</script>
+
 <script type="text/javascript" src="js/app/model.js"></script>
+<script type="text/javascript" src="js/app/context/model-context.js"></script>
 <script type="text/javascript" src="js/app/collection.js"></script>
-<script type="text/javascript" src="js/app/context/view-context.js"></script>
+<script type="text/javascript" src="js/app/context/collection-context.js"></script>
+<script type="text/javascript" src="js/app/context/view-app-context.js"></script>
 
 </body>
 </html>

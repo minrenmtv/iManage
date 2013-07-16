@@ -102,3 +102,26 @@ section.detail h6 {
 .mainNav .iconb {
   font-size: 22px;
 }
+
+/*Context part*/
+.green-context {
+  display: block;
+  background: -webkit-linear-gradient(top, #5FB800 0%,#6BCF00 100%);
+  color: white;
+  text-align: center;
+  border-radius: 4px;
+}
+.red-context {
+  display: block;
+  background: -webkit-linear-gradient(top, #D10034 0%,#B5002D 100%);
+  color: white;
+  text-align: center;
+  border-radius: 4px;
+}
+.blue-context {
+  display: block;
+  background: -webkit-linear-gradient(top, #005ED9 0%,#004EB5 100%);
+  color: white;
+  text-align: center;
+  border-radius: 4px;
+}
